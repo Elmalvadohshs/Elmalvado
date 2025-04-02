@@ -13,8 +13,8 @@ from pystyle import Colors, Colorate
 
 from elmalvadocpm import Elmalvadohshs
 
-__CHANNEL_USERNAME__ = "XenoMainChannel"
-__GROUP_USERNAME__   = "XenoMainChat"
+__CHANNEL_USERNAME__ = "ELMALVADOMAINCHATS"
+__GROUP_USERNAME__   = "ELMALVADOMAINCHANNELS"
 
 def signal_handler(sig, frame):
     print("\n Bye Bye...")
