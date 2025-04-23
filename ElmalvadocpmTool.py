@@ -15,6 +15,8 @@ from elmalvadocpm import Elmalvadohshs
 
 __CHANNEL_USERNAME__ = "ELMALVADOMAINCHATS"
 __GROUP_USERNAME__   = "ELMALVADOMAINCHANNELS"
+__TIKTOK_NAME__      = "EL MALVADO_CPM"
+__TIKTOK_USER__      = "car.parking.rd4"
 
 def signal_handler(sig, frame):
     print("\n Bye Bye...")
@@ -53,6 +55,7 @@ def banner(console):
     print(Colorate.Horizontal(Colors.rainbow, '\t         𝐏𝐋𝐄𝐀𝐒𝐄 𝐋𝐎𝐆𝐎𝐔𝐓 𝐅𝐑𝐎𝐌 𝐂𝐏𝐌 𝐁𝐄𝐅𝐎𝐑𝐄 𝐔𝐒𝐈𝐍𝐆 𝐓𝐇𝐈𝐒 𝐓𝐎𝐎𝐋'))
     print(Colorate.Horizontal(Colors.rainbow, '    𝐒𝐇𝐀𝐑𝐈𝐍𝐆 𝐓𝐇𝐄 𝐀𝐂𝐂𝐄𝐒𝐒 𝐊𝐄𝐘 𝐈𝐒 𝐍𝐎𝐓 𝐀𝐋𝐋𝐎𝐖𝐄𝐃 𝐀𝐍𝐃 𝐖𝐈𝐋𝐋 𝐁𝐄 𝐁𝐋𝐎𝐂𝐊𝐄𝐃'))
     print(Colorate.Horizontal(Colors.rainbow, f' ‌           𝐓𝐞𝐥𝐞𝐠𝐫𝐚𝐦: @{__CHANNEL_USERNAME__} 𝐎𝐫 @{__GROUP_USERNAME__}'))
+    print(Colorate.Hotizontal(colors.rainbow, f'            TIKTOK: @{__TIKTOK_NAME__} or @{__TIKTOK_USER__}'))
     print(Colorate.Horizontal(Colors.rainbow, '=================================================================='))
 
 def load_player_data(cpm):
@@ -191,7 +194,7 @@ if __name__ == "__main__":
             print(Colorate.Horizontal(Colors.rainbow, '{24}: Change Race Wins         1K'))
             print(Colorate.Horizontal(Colors.rainbow, '{25}: Change Race Loses        1K'))
             print(Colorate.Horizontal(Colors.rainbow, '{26}: Clone Account            7K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{27}: Inner car 414hp          2.5k'))
+            print(Colorate.Horizontal(Colors.rainbow, '{27}: Custom Car Hp            2.5k'))
             print(Colorate.Horizontal(Colors.rainbow, '{28}: Custom Angle             1.5k'))
             print(Colorate.Horizontal(Colors.rainbow, '{0} : Exit'))
             
@@ -610,20 +613,40 @@ if __name__ == "__main__":
                     print(Colorate.Horizontal(Colors.rainbow, '[!] Please use valid values.'))
                     sleep(2)
                     continue
-            elif service == 27: 
+            elif service == 27:
                 console.print("[bold yellow][!] Note[/bold yellow]: original speed can not be restored!.")
-                console.print("[bold cyan][!] Enter Car Details.[/bold cyan]")
+                console.print("[bold yellow][!] Enter Car Details.[/bold yellow]")
                 car_id = IntPrompt.ask("[bold][?] Car Id[/bold]")
-                console.print("[bold cyan][%] Execute Car Speed[/bold cyan]:",end=None)
-                if cpm.inner_car_speed(car_id):
+                new_hp = IntPrompt.ask("[bold][?]Enter New HP[/bold]")
+                new_inner_hp = IntPrompt.ask("[bold][?]Enter New Inner Hp[/bold]")
+                new_nm = IntPrompt.ask("[bold][?]Enter New NM[/bold]")
+                new_torque = IntPrompt.ask("[bold][?]Enter New Torque[/bold]")
+                console.print("[bold yellow][%] Hacking Car Speed[/bold yellow]:",end=None)
+                if cpm.hack_car_speed(car_id, new_hp, new_inner_hp, new_nm, new_torque):
                     console.print("[bold green]SUCCESFUL (✔)[/bold green]")
                     console.print("================================")
                     answ = Prompt.ask("[?] Do You want to Exit ?", choices=["y", "n"], default="n")
-                    if answ == "y": print(Colorate.Horizontal(Colors.rainbow, f'Thank You for using our tool, please join our telegram channe: @{__CHANNEL_USERNAME__}.'))
+                    if answ == "y": console.print("[bold white] Thank You for using my tool[/bold white]")
                     else: continue
                 else:
-                    print(Colorate.Horizontal(Colors.rainbow, 'FAILED.'))
-                    print(Colorate.Horizontal(Colors.rainbow, '[!] Please use valid values.'))
+                    console.print("[bold red]FAILED[/bold red]")
+                    console.print("[bold yellow] '[!] Please use valid values[/bold yellow]")
+                    sleep(2)
+                    continue
+            elif service == 28: # ANGLE
+                print(Colorate.Horizontal(Colors.rainbow, '[!] ENTER CAR DETALIS'))
+                car_id = IntPrompt.ask("[red][?] CAR ID[/red]")
+                print(Colorate.Horizontal(Colors.rainbow, '[!] ENTER STEERING ANGLE'))
+                custom = IntPrompt.ask("[red][?]﻿ENTER THE AMOUNT OF ANGLE YOU WANT[/red]")                
+                console.print("[red][%] HACKING CAR ANGLE[/red]: ", end=None)
+                if cpm.max_max1(car_id, custom):
+                    print(Colorate.Horizontal(Colors.rainbow, 'SUCCESSFUL'))
+                    answ = Prompt.ask("[red][?] DO YOU WANT TO EXIT[/red] ?", choices=["y", "n"], default="n")
+                    if answ == "y": console.print("THANK YOU FOR USING OUR TOOL")
+                    else: continue
+                else:
+                    print(Colorate.Horizontal(Colors.rainbow, 'FAILED'))
+                    print(Colorate.Horizontal(Colors.rainbow, 'PLEASE TRY AGAIN'))
                     sleep(2)
                     continue
             elif service == 28: # ANGLE
