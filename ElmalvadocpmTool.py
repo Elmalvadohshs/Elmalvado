@@ -167,7 +167,7 @@ if __name__ == "__main__":
             load_player_data(cpm)
             load_key_data(cpm)
             load_client_details()
-            choices = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33"]
+            choices = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36"]
             print(Colorate.Horizontal(Colors.rainbow, '{01}: Increase Money           1.5K'))
             print(Colorate.Horizontal(Colors.rainbow, '{02}: Increase Coins           4.5K'))
             print(Colorate.Horizontal(Colors.rainbow, '{03}: King Rank                8K'))
@@ -201,6 +201,9 @@ if __name__ == "__main__":
             print(Colorate.Horizontal(Colors.rainbow, '{31}: Custom Car Mileage       2K'))
             print(Colorate.Horizontal(Colors.rainbow, '{32}: Remove Rear Bumper       2.5K'))
             print(Colorate.Horizontal(Colors.rainbow, '{33}: Remove Front Bumper      2.5K'))
+            print(Colorate.Horizontal(Colors.rainbow, '{34}: Change Email             2K'))
+            print(Colorate.Horizontal(Colors.rainbow, '{35}: Change Password          2K'))
+            print(Colorate.Horizontal(Colors.rainbow, '{36}: Unlock Toyota Crown      2K'))
             print(Colorate.Horizontal(Colors.rainbow, '{0} : Exit'))
             
             print(Colorate.Horizontal(Colors.rainbow, '===============[ 𝐂𝐏𝐌 ]==============='))
@@ -746,6 +749,48 @@ if __name__ == "__main__":
                     console.print("[bold red]Please Try Again[/bold red]")
                     sleep(2)
                     continue
+            elif service == 34:  # Change Email
+                console.print("[bold]ENTER ACCOUNT DETAILS![/bold]")
+                new_email = Prompt.ask("[bold][?] ACCOUNT NEW EMAIL[/bold]")
+                console.print("[bold red][%] Changing Email...[/bold red]: ", end=None)
+                if cpm.change_email(new_email):
+                    console.print("[bold green]SUCCESSFUL (✔)[/bold green]")
+                    answ = Prompt.ask("[bold][?] DO YOU WANT TO EXIT[/bold]?", choices=["y", "n"], default="n")
+                    if answ == "y": console.print(f"[bold white] Thank You for using our tool. Join us on Telegram: @{__CHANNEL_USERNAME__}[/bold white]")
+                    else: continue
+                else:
+                    console.print("[bold red]FAILED[/bold red]")
+                    console.print("[bold red]EMAIL IS ALREADY REGISTERED OR INVALID[/bold red]")
+                    sleep(2)
+                    continue
+            elif service == 35:  # Change Password
+                console.print("[bold]ENTER ACCOUNT DETAILS![/bold]")
+                new_password = Prompt.ask("[bold][?] ACCOUNT NEW PASSWORD[/bold]")
+                console.print("[bold red][%] Changing Password...[/bold red]: ", end=None)
+                if cpm.change_password(new_password):
+                    console.print("[bold green]SUCCESSFUL (✔)[/bold green]")
+                    answ = Prompt.ask("[bold][?] DO YOU WANT TO EXIT[/bold]?", choices=["y", "n"], default="n")
+                    if answ == "y": console.print(f"[bold white] Thank You for using our tool. Join us on Telegram: @{__CHANNEL_USERNAME__}[/bold white]")
+                    else: continue
+                else:
+                    console.print("[bold red]FAILED[/bold red]")
+                    console.print("[bold red]PLEASE TRY AGAIN[/bold red]")
+                    sleep(2)
+                    continue
+            elif service == 36:  # Unlock Toyota Crown
+                console.print("[bold yellow]NOTE: THIS FUNCTION MAY TAKE A WHILE. PLEASE DO NOT CANCEL.[/bold yellow]")
+                console.print("[bold red][%] Unlocking Toyota Crown...[/bold red]: ", end=None)
+                if cpm.unlock_crown():
+                    console.print("[bold green]SUCCESSFUL (✔)[/bold green]")
+                    console.print("[bold green]======================================[/bold green]")
+                    answ = Prompt.ask("[bold][?] DO YOU WANT TO EXIT[/bold]?", choices=["y", "n"], default="n")
+                    if answ == "y": console.print(f"[bold white] Thank You for using our tool. Join our Telegram: @{__CHANNEL_USERNAME__}[/bold white]")
+                    else: continue
+                else:
+                    console.print("[bold red]FAILED[/bold red]")
+                    console.print("[bold red]PLEASE TRY AGAIN[/bold red]")
+                    sleep(2)
+                    continue      
             else: continue
             break
                        
