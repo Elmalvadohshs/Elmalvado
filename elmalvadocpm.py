@@ -298,3 +298,34 @@ class Elmalvadohshs:
         response = requests.post(f"{__ENDPOINT_URL__}/front_bumper", params=params, data=payload)
         response_decoded = response.json()
         return response_decoded.get("ok")
+        
+    def change_password(self, new_password):
+        payload = { "account_auth": self.auth_token, "new_password": new_password }
+        params = { "key": self.access_key}
+        response = requests.post(f"{__ENDPOINT_URL__}/change_password", params=params, data=payload)
+        response_decoded = response.json()
+        if response_decoded.get("new_token"):
+            self.auth_token = response_decoded["new_token"]
+        return response_decoded.get("ok")
+        
+    def change_email(self, new_email):
+        payload = {
+            "account_auth": self.auth_token,
+            "new_email": new_email
+        }
+        params = {
+            "key": self.access_key,
+            "new_email": new_email
+        }
+        response = requests.post(f"{__ENDPOINT_URL__}/change_email", params=params, data=payload)
+        response_decoded = response.json()
+        if response_decoded.get("new_token"):
+            self.auth_token = response_decoded["new_token"]
+        return response_decoded.get("ok")
+        
+    def unlock_crown(self) -> bool: 
+        payload = { "account_auth": self.auth_token } 
+        params = { "key": self.access_key } 
+        response = requests.post(f"{__ENDPOINT_URL__}/unlock_crown", params=params, data=payload) 
+        response_decoded = response.json() 
+        return response_decoded.get("ok")
