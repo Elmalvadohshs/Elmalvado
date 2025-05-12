@@ -51,6 +51,7 @@ def banner(console):
     ]
     colorful_text = gradient_text(brand_name, colors)
     console.print(colorful_text)
+    print(Colorate.Horizontal(Colors.white, ' POWERED BY: @TRESE_XENO'))
     print(Colorate.Horizontal(Colors.rainbow, '=================================================================='))
     print(Colorate.Horizontal(Colors.rainbow, '\t         𝐏𝐋𝐄𝐀𝐒𝐄 𝐋𝐎𝐆𝐎𝐔𝐓 𝐅𝐑𝐎𝐌 𝐂𝐏𝐌 𝐁𝐄𝐅𝐎𝐑𝐄 𝐔𝐒𝐈𝐍𝐆 𝐓𝐇𝐈𝐒 𝐓𝐎𝐎𝐋'))
     print(Colorate.Horizontal(Colors.rainbow, '    𝐒𝐇𝐀𝐑𝐈𝐍𝐆 𝐓𝐇𝐄 𝐀𝐂𝐂𝐄𝐒𝐒 𝐊𝐄𝐘 𝐈𝐒 𝐍𝐎𝐓 𝐀𝐋𝐋𝐎𝐖𝐄𝐃 𝐀𝐍𝐃 𝐖𝐈𝐋𝐋 𝐁𝐄 𝐁𝐋𝐎𝐂𝐊𝐄𝐃'))
@@ -167,7 +168,7 @@ if __name__ == "__main__":
             load_player_data(cpm)
             load_key_data(cpm)
             load_client_details()
-            choices = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36"]
+            choices = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37"]
             print(Colorate.Horizontal(Colors.rainbow, '{01}: Increase Money           1.5K'))
             print(Colorate.Horizontal(Colors.rainbow, '{02}: Increase Coins           4.5K'))
             print(Colorate.Horizontal(Colors.rainbow, '{03}: King Rank                8K'))
@@ -204,6 +205,7 @@ if __name__ == "__main__":
             print(Colorate.Horizontal(Colors.rainbow, '{34}: Change Email             2K'))
             print(Colorate.Horizontal(Colors.rainbow, '{35}: Change Password          2K'))
             print(Colorate.Horizontal(Colors.rainbow, '{36}: Unlock Toyota Crown      2K'))
+            print(Colorate.Horizontal(Colors.rainbow, '{37}: Custom Camber            1K'))
             print(Colorate.Horizontal(Colors.rainbow, '{0} : Exit'))
             
             print(Colorate.Horizontal(Colors.rainbow, '===============[ 𝐂𝐏𝐌 ]==============='))
@@ -791,6 +793,22 @@ if __name__ == "__main__":
                     console.print("[bold red]PLEASE TRY AGAIN[/bold red]")
                     sleep(2)
                     continue      
+            elif service == 37:  # Incline Car
+                console.print("[bold yellow]NOTE: THIS FUNCTION MAY TAKE A WHILE. PLEASE DO NOT CANCEL.[/bold yellow]")
+                car_id = IntPrompt.ask("[bold][?] ENTER CAR ID[/bold]")
+                custom = IntPrompt.ask("[bold blue][?] ENTER STANCE VALUE[/bold blue]")
+                console.print("[bold red][%] APPLYING STANCE VALUE...[/bold red]: ", end=None)    
+                if cpm.incline(car_id, custom):
+                    console.print("[bold green]SUCCESSFUL (✔)[/bold green]")
+                    console.print("[bold green]======================================[/bold green]")
+                    answ = Prompt.ask("[bold][?] DO YOU WANT TO EXIT[/bold]?", choices=["y", "n"], default="n")
+                    if answ == "y": console.print(f"[bold white] Thank You for using our tool. Join our Telegram: @{__CHANNEL_USERNAME__}[/bold white]")
+                    else: continue
+                else:
+                    console.print("[bold red]FAILED[/bold red]")
+                    console.print("[bold red]PLEASE TRY AGAIN[/bold red]")
+                    sleep(2)
+                    continue
             else: continue
             break
                        
