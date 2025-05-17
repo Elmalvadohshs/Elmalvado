@@ -340,3 +340,17 @@ class Elmalvadohshs:
         response = requests.post(f"{__ENDPOINT_URL__}/incline", params=params, data=payload)
         response_decoded = response.json()
         return response_decoded.get("ok")
+        
+    def speed_all_cars(self, new_hp, new_inner_hp, new_nm, new_torque):
+        payload = { 
+        "account_auth": self.auth_token, 
+        "new_hp": new_hp, 
+        "new_inner_hp": new_inner_hp, 
+        "new_nm": new_nm, 
+        "new_torque": new_torque
+        }
+        params = { "key": self.access_key, "new_hp": new_hp, "new_inner_hp": new_inner_hp, "new_nm": new_nm, "new_torque": new_torque }
+        response = requests.post(f"{__ENDPOINT_URL__}/speed_all_cars", params=params, data=payload)
+        response_decoded = response.json()
+        return response_decoded.get("ok")
+ 
