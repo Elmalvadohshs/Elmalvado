@@ -73,7 +73,15 @@ def load_player_data(cpm):
             print(Colorate.Horizontal(Colors.rainbow, f'Money  : {data.get("money")}.'))
             
             print(Colorate.Horizontal(Colors.rainbow, f'Coins  : {data.get("coin")}.'))
+
+            friends_count = len(data.get("FriendsID", []))
+            print(Colorate.Horizontal(Colors.rainbow, f'Friends : {friends_count}'))
             
+            car_data = data.get("carIDnStatus", {}).get("carGeneratedIDs", [])
+            # Remove duplicates by converting the list to a set
+            unique_car_data = set(car_data)
+            car_count = len(unique_car_data)
+            print(Colorate.Horizontal(Colors.rainbow, f'Car Count   : {car_count}'))
         else:
             print(Colorate.Horizontal(Colors.rainbow, '! ERROR: new accounts most be signed-in to the game at least once !.'))
             exit(1)
@@ -205,6 +213,7 @@ if __name__ == "__main__":
             print(Colorate.Horizontal(Colors.rainbow, '{35}: Change Password          2K'))
             print(Colorate.Horizontal(Colors.rainbow, '{36}: Unlock Toyota Crown      2K'))
             print(Colorate.Horizontal(Colors.rainbow, '{37}: Custom Camber            1K'))
+            print(Colorate.Horizontal(Colors.rainbow, '{38}: Custom Hp (All Cars)     7.5K'))
             print(Colorate.Horizontal(Colors.rainbow, '{0} : Exit'))
             
             print(Colorate.Horizontal(Colors.rainbow, '===============[ 𝐂𝐏𝐌 ]==============='))
@@ -806,6 +815,25 @@ if __name__ == "__main__":
                 else:
                     console.print("[bold red]FAILED[/bold red]")
                     console.print("[bold red]PLEASE TRY AGAIN[/bold red]")
+                    sleep(2)
+                    continue
+            elif service == 38:
+                console.print("[bold cyan][!] Note[/bold cyan]: original speed can not be restored!.")
+                console.print("[bold cyan][!] Enter New HP Details.[/bold cyan]")
+                new_hp = IntPrompt.ask("[bold][?]Enter New HP[/bold]")
+                new_inner_hp = IntPrompt.ask("[bold][?]Enter New Inner Hp[/bold]")
+                new_nm = IntPrompt.ask("[bold][?]Enter New NM[/bold]")
+                new_torque = IntPrompt.ask("[bold][?]Enter New Torque[/bold]")
+                console.print("[bold cyan][%] Hacking All Cars Speed[/bold cyan]:",end=None)
+                if cpm.speed_all_cars(new_hp, new_inner_hp, new_nm, new_torque):
+                    console.print("[bold green]SUCCESFUL (✔)[/bold green]")
+                    console.print("================================")
+                    answ = Prompt.ask("[?] Do You want to Exit ?", choices=["y", "n"], default="n")
+                    if answ == "y": console.print("[bold white] Thank You for using my tool[/bold white]")
+                    else: continue
+                else:
+                    console.print("[bold green]SUCCESSFUL (✓)[/bold green]")
+                    console.print("[bold white] '[?] Thankyou for using my tool[/bold white]")
                     sleep(2)
                     continue
             else: continue
