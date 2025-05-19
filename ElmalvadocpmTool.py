@@ -854,7 +854,7 @@ if __name__ == "__main__":
                 console.print("[bold]ENTER SPOILER ID![/bold]")
                 custom = IntPrompt.ask("[bold blue][?]ENTER NEW SPOILER ID[/bold blue]")                
                 console.print("[bold red][%] SAVING YOUR DATA [/bold red]: ", end=None)
-                if cpm.telmunnongodz(car_id, custom):
+                if cpm.spoiler(car_id, custom):
                     console.print("[bold green]SUCCESSFUL (✔)[/bold green]")
                     answ = Prompt.ask("[bold][?] DO YOU WANT TO EXIT[/bold] ?", choices=["y", "n"], default="n")
                     if answ == "y": console.print("[bold white] Thank You for using my tool[/bold white]")
