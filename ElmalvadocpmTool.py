@@ -10,6 +10,8 @@ from rich.text import Text
 from rich.style import Style
 import pystyle
 from pystyle import Colors, Colorate
+from pystyle import Colorate, Colors, Col
+from pystyle import Colorate, Colors
 
 from elmalvadocpm import Elmalvadohshs
 
@@ -175,52 +177,62 @@ if __name__ == "__main__":
             load_player_data(cpm)
             load_key_data(cpm)
             load_client_details()
-            choices = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38"]
-            print(Colorate.Horizontal(Colors.rainbow, '{01}: Increase Money           1.5K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{02}: Increase Coins           4.5K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{03}: King Rank                8K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{04}: Change ID                4.5K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{05}: Change Name              100'))
-            print(Colorate.Horizontal(Colors.rainbow, '{06}: Change Name (Rainbow)    100'))
-            print(Colorate.Horizontal(Colors.rainbow, '{07}: Number Plates            2K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{08}: Account Delete           FREE'))
-            print(Colorate.Horizontal(Colors.rainbow, '{09}: Account Register         FREE'))
-            print(Colorate.Horizontal(Colors.rainbow, '{10}: Delete Friends           500'))
-            print(Colorate.Horizontal(Colors.rainbow, '{11}: Unlock Paid Cars         5k'))
-            print(Colorate.Horizontal(Colors.rainbow, '{12}: Unlock all Cars          6K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{13}: Unlock all Cars Siren    3.5K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{14}: Unlock w16 Engine        4K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{15}: Unlock All Horns         3K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{16}: Unlock Disable Damage    3K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{17}: Unlock Unlimited Fuel    3K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{18}: Unlock House 3           4K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{19}: Unlock Smoke             4K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{20}: Unlock Wheels            4K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{21}: Unlock Animations        2K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{22}: Unlock Equipaments M     3K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{23}: Unlock Equipaments F     3K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{24}: Change Race Wins         1K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{25}: Change Race Loses        1K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{26}: Clone Account            7K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{27}: Custom Car Hp            2.5k'))
-            print(Colorate.Horizontal(Colors.rainbow, '{28}: Custom Angle             1.5k'))
-            print(Colorate.Horizontal(Colors.rainbow, '{29}: Custom Tire Burner       2K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{30}: Custom Car Brake         2k'))
-            print(Colorate.Horizontal(Colors.rainbow, '{31}: Custom Car Mileage       2K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{32}: Remove Rear Bumper       2.5K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{33}: Remove Front Bumper      2.5K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{34}: Change Email             2K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{35}: Change Password          2K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{36}: Unlock Toyota Crown      2K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{37}: Custom Camber            1K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{38}: Custom Hp (All Cars)     7.5K'))
-            print(Colorate.Horizontal(Colors.rainbow, '{0} : Exit'))
+            choices = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39"]
+            class Col:
+                red = "\033[91m"
+                reset = "\033[0m"
+                
+            menu_price_list = [
+                ("{01}: Increase Money                ", "1500"),
+                ("{02}: Increase Coins                ", "8000"),
+                ("{03}: King Rank                     ", "4500"),
+                ("{04}: Change ID                     ", "100"),
+                ("{05}: Change Name                   ", "100"),
+                ("{06}: Change Name (rainbow)         ", "2000"),
+                ("{07}: Number Plates                 ", "Free"),
+                ("{08}: Account Delete                ", "Free"),
+                ("{09}: Account Register              ", "500"),
+                ("{10}: Delete Friends                ", "5000"),
+                ("{11}: Unlock All Paid Cars          ", "6000"),
+                ("{12}: Unlock All Cars               ", "3500"),
+                ("{13}: Unlock All Cars Siren         ", "4000"),
+                ("{14}: Unlock W16 Engine             ", "3000"),
+                ("{15}: Unlock All Horns              ", "3000"),
+                ("{16}: Unlock Disable Damage         ", "3000"),
+                ("{17}: Unlock Unlimited Fuel         ", "4000"),
+                ("{18}: Unlock Home 3                 ", "4000"),
+                ("{19}: Unlock Smoke                  ", "4000"),
+                ("{20}: Unlock Wheels                 ", "2000"),
+                ("{21}: Unlock Animations             ", "3000"),
+                ("{22}: Unlock Equipaments M          ", "3000"),
+                ("{23}: Unlock Equipaments F          ", "1000"),
+                ("{24}: Change Race Wins              ", "1000"),
+                ("{25}: Change Race Loses             ", "7000"),
+                ("{26}: Clone Account                 ", "2500"),
+                ("{27}: Custom HP                     ", "1500"),
+                ("{28}: Custom Angle                  ", "1500"),
+                ("{29}: Custom Tire burner            ", "1500"),
+                ("{30}: Custom Car Brake              ", "2000"),
+                ("{31}: Custom Car Millage            ", "2000"),
+                ("{32}: Remove Rear Bumper            ", "2000"),
+                ("{33}: Remove Front Bumper           ", "2000"),
+                ("{34}: Change Account Email          ", "2000"),
+                ("{35}: Change Account Password       ", "10000"),
+                ("{36}: Unlock Toyota Crown           ", "10000"),
+                ("{37}: Custom Camber                 ", "4500"),
+                ("{38}: Custom Hp (All Cars)          ", "2000"),     
+                ("{39}: Custom Spoiler                ", "3000"),
+                ("{00}: Exit                          ", ""),
+            ]
+            
+            for menu, price in menu_price_list:
+                print(Colorate.Horizontal(Colors.rainbow, menu) + Col.red + price + Col.reset)
             
             print(Colorate.Horizontal(Colors.rainbow, '===============[ 𝐂𝐏𝐌 ]==============='))
             
             service = IntPrompt.ask(f"[bold][?] Select a Service [red][1-{choices[-1]} or 0][/red][/bold]", choices=choices, show_choices=False)
             
-            print(Colorate.Horizontal(Colors.rainbow, '===============[ 𝐂𝐏𝐌 ]==============='))
+            print(Colorate.Horizontal(Colors.rainbow, '===============[ 𝐂𝐏𝐌 ]===============
             
             if service == 0: # Exit
                 print(Colorate.Horizontal(Colors.rainbow, f'Thank You for using our tool, please join our telegram channel: @{__CHANNEL_USERNAME__}.'))
@@ -788,7 +800,7 @@ if __name__ == "__main__":
                     sleep(2)
                     continue
             elif service == 36:  # Unlock Toyota Crown
-                console.print("[bold yellow]NOTE: THIS FUNCTION MAY TAKE A WHILE. PLEASE DO NOT CANCEL.[/bold yellow]")
+                console.print("[bold]NOTE: THIS FUNCTION MAY TAKE A WHILE. PLEASE DO NOT CANCEL.[/bold]")
                 console.print("[bold red][%] Unlocking Toyota Crown...[/bold red]: ", end=None)
                 if cpm.unlock_crown():
                     console.print("[bold green]SUCCESSFUL (✔)[/bold green]")
@@ -802,7 +814,7 @@ if __name__ == "__main__":
                     sleep(2)
                     continue      
             elif service == 37:  # Incline Car
-                console.print("[bold yellow]NOTE: THIS FUNCTION MAY TAKE A WHILE. PLEASE DO NOT CANCEL.[/bold yellow]")
+                console.print("[bold]NOTE: THIS FUNCTION MAY TAKE A WHILE. PLEASE DO NOT CANCEL.[/bold]")
                 car_id = IntPrompt.ask("[bold][?] ENTER CAR ID[/bold]")
                 custom = IntPrompt.ask("[bold blue][?] ENTER STANCE VALUE[/bold blue]")
                 console.print("[bold red][%] APPLYING STANCE VALUE...[/bold red]: ", end=None)    
@@ -818,8 +830,8 @@ if __name__ == "__main__":
                     sleep(2)
                     continue
             elif service == 38:
-                console.print("[bold cyan][!] Note[/bold cyan]: original speed can not be restored!.")
-                console.print("[bold cyan][!] Enter New HP Details.[/bold cyan]")
+                console.print("[bold][!] Note[/bold]: original speed can not be restored!.")
+                console.print("[bold][!] Enter New HP Details.[/bold]")
                 new_hp = IntPrompt.ask("[bold][?]Enter New HP[/bold]")
                 new_inner_hp = IntPrompt.ask("[bold][?]Enter New Inner Hp[/bold]")
                 new_nm = IntPrompt.ask("[bold][?]Enter New NM[/bold]")
@@ -834,6 +846,22 @@ if __name__ == "__main__":
                 else:
                     console.print("[bold green]SUCCESSFUL (✓)[/bold green]")
                     console.print("[bold white] '[?] Thankyou for using my tool[/bold white]")
+                    sleep(2)
+                    continue
+            elif service == 39: # Custom Spoiler
+                console.print("[bold]ENTER CAR DETAILS![/bold]")
+                car_id = IntPrompt.ask("[bold][?] CAR ID[/bold]")
+                console.print("[bold]ENTER SPOILER ID![/bold]")
+                custom = IntPrompt.ask("[bold blue][?]ENTER NEW SPOILER ID[/bold blue]")                
+                console.print("[bold red][%] SAVING YOUR DATA [/bold red]: ", end=None)
+                if cpm.telmunnongodz(car_id, custom):
+                    console.print("[bold green]SUCCESSFUL (✔)[/bold green]")
+                    answ = Prompt.ask("[bold][?] DO YOU WANT TO EXIT[/bold] ?", choices=["y", "n"], default="n")
+                    if answ == "y": console.print("[bold white] Thank You for using my tool[/bold white]")
+                    else: continue
+                else:
+                    console.print("[bold red]FAILED[/bold red]")
+                    console.print("[bold red]Please Try Again[/bold red]")
                     sleep(2)
                     continue
             else: continue
