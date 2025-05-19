@@ -219,7 +219,7 @@ if __name__ == "__main__":
                 ("{34}: Change Account Email          ", "2K"),
                 ("{35}: Change Account Password       ", "2K"),
                 ("{36}: Unlock Toyota Crown           ", "10"),
-                ("{37}: Custom Camber                 ", "4.5K),
+                ("{37}: Custom Camber                 ", "4.5K"),
                 ("{38}: Custom Hp (All Cars)          ", "7.5K"),     
                 ("{39}: Custom Spoiler                ", "10K"),
                 ("{00}: Exit                          ", ""),
