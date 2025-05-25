@@ -228,11 +228,11 @@ if __name__ == "__main__":
             for menu, price in menu_price_list:
                 print(Colorate.Horizontal(Colors.rainbow, menu) + Col.red + price + Col.reset)
             
-            print(Colorate.Horizontal(Colors.rainbow, '===============[ ELMALVADO ]==============='))
+            print(Colorate.Horizontal(Colors.rainbow, '=============[ ELMALVADO ]============'))
             
             service = IntPrompt.ask(f"[bold][?] Select a Service [red][1-{choices[-1]} or 0][/red][/bold]", choices=choices, show_choices=False)
             
-            print(Colorate.Horizontal(Colors.rainbow, '===============[ ELMALVADO ]==============='))
+            print(Colorate.Horizontal(Colors.rainbow, '=============[ ELMALVADO ]============'))
             
             if service == 0: # Exit
                 print(Colorate.Horizontal(Colors.rainbow, f'Thank You for using our tool, please join our telegram channel: @{__CHANNEL_USERNAME__}.'))
